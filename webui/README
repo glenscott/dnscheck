@@ -10,7 +10,7 @@ The contents of the webui directory need to be copied to the web server
         'db_port' => 3306,
         'db_name' => 'dnscheck',
         'db_user' => 'dnscheck_webui',
-        'db_pass' => 'dnscheck',
+        'db_pass' => 'demo_pwd',
     );
 * The mysql user, dnscheck_webui, needs the following privileges on the database:
         GRANT USAGE ON *.* TO 'dnscheck_webui'@'localhost' IDENTIFIED BY 'demo_pwd';
@@ -18,11 +18,11 @@ The contents of the webui directory need to be copied to the web server
         GRANT SELECT, INSERT, UPDATE, DELETE ON `dnscheck`.`queue` TO 'dnscheck_webui'@'localhost';
         GRANT SELECT, INSERT, UPDATE ON `dnscheck`.`source` TO 'dnscheck_webui'@'localhost';
         GRANT SELECT ON `dnscheck`.`tests` TO 'dnscheck_webui'@'localhost';
-        GRANT SELECT ON `dnscheck`.`messages` TO 'dnscheck_webui'@'localhost';
+        GRANT SELECT, INSERT ON `dnscheck`.`messages` TO 'dnscheck_webui'@'localhost';
 * Fill the messages table by using the locale2sql.pl script, e.g. in
   the engine/locale directory:
         $ perl ../util/locale2sql.pl en.yaml > messages.sql
-        $ mysql -u root dnscheckng -p < messages.sql # or similar
+        $ mysql -u dnscheck_webui dnscheck -p < messages.sql # or similar
 
 After this the GUI should be up and running, as long as there's a
 dnscheck-dispatcher able to take domains from the QUEUE-table then
