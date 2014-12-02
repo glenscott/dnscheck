@@ -54,10 +54,7 @@ function i18n_load_language($language = NULL) {
 	global $i18n_lang, $i18n_current_language;
 	
 	if ($language == NULL) {
-		$language = $_COOKIE["i18n_language"];
-		if (!$language) {
-			$language = getDefaultLanguage();
-		}
+		$language = (isset($_COOKIE["i18n_language"]) ? $_COOKIE["i18n_language"] : getDefaultLanguage());
 	}
 	
 	$i18n_current_language = $language;
