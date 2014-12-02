@@ -113,6 +113,15 @@ function _e($key, $file = false, $language = NULL) {
 	echo __($key, $file, $language);
 }
 
+/**
+ * Echo language string for given key, encoding HTML entities
+ *
+ * @param string $key
+ * @param string $language - optional. If $language is not specified, use the currently loaded language.
+ */
+function _h($key, $file = false, $language = NULL) {
+	echo htmlspecialchars(__($key, $file, $language));
+}
 
 
 ?>

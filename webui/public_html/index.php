@@ -137,59 +137,59 @@ function switchLang(lang) {
 
 <body>
 <div id="wrapper">
-	<input type="hidden" value="<?php echo ($test);?>" id="test_type"/>
+	<input type="hidden" value="<?php echo htmlspecialchars($test);?>" id="test_type"/>
 	<div id="top">
 		<h1 id="logo_dnscheck"><a href="#dnscheck">DNSCheck</a></h1>
-		<h2 id="logo_se"><a href="#se"><?php _e("a_service_from_se");?></a></h2>
+		<h2 id="logo_se"><a href="#se"><?php _h("a_service_from_se");?></a></h2>
         <div class="clear"> </div>
 			<div id="searchbox">
             	<div class="testtabs">
                 <ul>
-               	  <li <?php if($test == 'standard'): ?>class="testtabson"<?php endif; ?>><a href="./"><?php _e("domain_test");?></a></li>
-                  <li <?php if($test == 'undelegated'): ?>class="testtabson"<?php endif; ?>><a href="?test=undelegated"><?php _e("undelegated_domain_test");?></a></li>
+               	  <li <?php if($test == 'standard'): ?>class="testtabson"<?php endif; ?>><a href="./"><?php _h("domain_test");?></a></li>
+                  <li <?php if($test == 'undelegated'): ?>class="testtabson"<?php endif; ?>><a href="?test=undelegated"><?php _h("undelegated_domain_test");?></a></li>
                 </ul>
                 </div>
-				<h3 id="searchhead"><?php _e("test_and_find_errors");?></h3>
+				<h3 id="searchhead"><?php _h("test_and_find_errors");?></h3>
 
 				<form id="mainform" action="">
                 <div id="testinput">
-                        <label for="domaininput"><?php _e("domain_name");?>:</label>
-                        <input name="" type="text" id="domaininput" value="<?php echo($permalinkDomain);?>" />
+                        <label for="domaininput"><?php _h("domain_name");?>:</label>
+                        <input name="" type="text" id="domaininput" value="<?php echo htmlspecialchars($permalinkDomain);?>" />
     			</div>
     		<?php if($test != 'undelegated'):?>
-                <p id="testtext"><?php _e("enter_your_domain_name");?></p>
+                <p id="testtext"><?php _h("enter_your_domain_name");?></p>
             <?php else:?>
-            	<p id="testtext"><?php _e("enter_your_undelegated_domain_name");?>
-            	<a href="./?faq=1&test=undelegated#f16"><?php _e("what_is_an_undelegated");?></a>
+            	<p id="testtext"><?php _h("enter_your_undelegated_domain_name");?>
+            	<a href="./?faq=1&amp;test=undelegated#f16"><?php _h("what_is_an_undelegated");?></a>
             	</p>
             	
            	<?php endif;?>
 
 			<?php if($test == 'undelegated'):?>
 				<div id="nameservers">
-	              	<h4 class="tabhead"><span><?php _e("name_servers");?></span></h4>
+	              	<h4 class="tabhead"><span><?php _h("name_servers");?></span></h4>
 	              	<div class="nameserver" id="nameserver">
-	                	<label for="nameserver_host"><?php _e("host");?>:</label>
+	                	<label for="nameserver_host"><?php _h("host");?>:</label>
 	                    <input name="nameserver_host" type="text"/>
-	                	<label for="nameserver_ip"><?php _e("ip");?>:</label>
+	                	<label for="nameserver_ip"><?php _h("ip");?>:</label>
 	                    <input name="nameserver_ip" type="text" />
-	                    <a href="#" title="<?php _e("remove_name_server");?>" class="removenameserver"><img src="_img/icon_remove.png" width="18" height="18" style="border:none" alt="<?php _e("remove_name_server");?>" /></a>
+	                    <a href="#" title="<?php _h("remove_name_server");?>" class="removenameserver"><img src="_img/icon_remove.png" width="18" height="18" style="border:none" alt="<?php _h("remove_name_server");?>" /></a>
 	              	</div>
               	</div>
               	<p class="addnameserver">
-					<a id="addnameserver" href="#"><span><?php _e("add_name_server");?></span></a>
+					<a id="addnameserver" href="#"><span><?php _h("add_name_server");?></span></a>
 				</p><br class="clear" />
               <?php endif;?>
 
-              <p id="testbutton"><a href="javascript:void(0);" id="testnow" class="button"><?php _e("test_now");?></a></p>
+              <p id="testbutton"><a href="javascript:void(0);" id="testnow" class="button"><?php _h("test_now");?></a></p>
 
 				</form>
 			</div>
 
 			<div id="menu">
 				<ul>
-					<li><a href="./?test=<?php echo $test; ?>"><?php _e("home"); ?></a></li>
-					<li><a href="./?faq=1&amp;test=<?php echo $test; ?>"><?php _e("faq"); ?></a></li>
+					<li><a href="./?test=<?php echo urlencode($test); ?>"><?php _h("home"); ?></a></li>
+					<li><a href="./?faq=1&amp;test=<?php echo urlencode($test); ?>"><?php _h("faq"); ?></a></li>
 				</ul>
 			</div>
             <div class="clear"> </div>
@@ -197,12 +197,12 @@ function switchLang(lang) {
 
 	<div id="startwrapper">
 		<?php if (isset($_GET['faq']) && ("1" == $_GET['faq'])) { ?>
-			<h3><?php _e("faq"); ?></h3>
+			<h3><?php _h("faq"); ?></h3>
 			<div class="startbox">
 			<?php _e("faq", true);?>
 			</div>
 		<?php } else { ?>
-			<h3><?php _e("about_dnscheck");?></h3>
+			<h3><?php _h("about_dnscheck");?></h3>
 			<div class="startbox">
 			<?php _e("about", true);?>
 			</div>
@@ -218,7 +218,7 @@ function switchLang(lang) {
 
 	<?php if($test == 'undelegated'):?>
 	    <div id="undelegateddomain_info" style="display:none">
-	    <p><strong><?php _e("note");?>:</strong> <?php _e("this_test_on_undelegated");?></p>
+	    <p><strong><?php _h("note");?>:</strong> <?php _h("this_test_on_undelegated");?></p>
 	    </div>
     <?php endif;?>
 
@@ -227,38 +227,38 @@ function switchLang(lang) {
 			<div class="widetop">
 				<img src="_img/mini-loader.gif" style="display: none" id="result_loader" alt="Loading" width="16" height="16" />
 				<ul class="tabs">
-					<li class="tab_on" id="simpletab"><a href="javascript:activateSimpleTab();"><?php _e("basic_results");?></a></li>
-					<li id="advancedtab"><a href="javascript:activateAdvancedTab();"><?php _e("advanced_results");?></a></li>
+					<li class="tab_on" id="simpletab"><a href="javascript:activateSimpleTab();"><?php _h("basic_results");?></a></li>
+					<li id="advancedtab"><a href="javascript:activateAdvancedTab();"><?php _h("advanced_results");?></a></li>
 				</ul>
 			</div>
 			<div id="treediv"></div>
 			<div id="listdiv" style="display: none"></div>
-			<span style="display: none" id="link_to_test_label"><?php _e("link_to_this_test"); ?>:</span>
+			<span style="display: none" id="link_to_test_label"><?php _h("link_to_this_test"); ?>:</span>
 		</div>
 		<div id="history">
-			<h3 class="smalltop"><img src="_img/mini-loader.gif" style="display: none" id="history_loader" alt="Loading" width="16" height="16" /><?php _e("test_history");?></h3>
+			<h3 class="smalltop"><img src="_img/mini-loader.gif" style="display: none" id="history_loader" alt="Loading" width="16" height="16" /><?php _h("test_history");?></h3>
 			<div class="smallbox">
-			<p id="pager_error" style="display: none"><img src="_img/icon_warning.gif" alt="Error" width="16" height="14" /> <?php _e("error_loading_history");?></p>
-			<p id="pager_no_history" style="display: none"><?php _e("no_test_history");?></p>
+			<p id="pager_error" style="display: none"><img src="_img/icon_warning.gif" alt="Error" width="16" height="14" /> <?php _h("error_loading_history");?></p>
+			<p id="pager_no_history" style="display: none"><?php _h("no_test_history");?></p>
 			<ul id="pagerlist">
-				<li style="display:none"><?php _e("test_history");?></li>
+				<li style="display:none"><?php _h("test_history");?></li>
 			</ul>
 			</div>
 			<div class="pager" id="pagerbuttonsdiv">
 			<a href="javascript:void(0);"><img src="_img/pager_start_off.png" alt="Start" id="pagerstart" /></a>
 			<a href="javascript:void(0);"><img src="_img/pager_back_off.png" alt="Back" id="pagerback" /></a>
-			<p><?php _e("page"); ?> <span id="pagerlabel"></span></p>
+			<p><?php _h("page"); ?> <span id="pagerlabel"></span></p>
 			<a href="javascript:void(0);"><img src="_img/pager_forward_on.png" alt="Forward" id="pagerforward" /></a>
 			<a href="javascript:void(0);"><img src="_img/pager_end_on.png" alt="End" id="pagerend" /></a>
 			<div class="clear"> </div>
 			</div>
 
-			<h3 class="smalltop topmargin"><?php _e("explanation"); ?></h3>
+			<h3 class="smalltop topmargin"><?php _h("explanation"); ?></h3>
 			<div class="smallbox">
-				<p class="testok"><?php _e("test_was_ok");?></p>
-				<p class="testwarn"><?php _e("test_contains_warnings");?></p>
-				<p class="testerror"><?php _e("test_contains_errors");?></p>
-				<p class="testoff"><?php _e("test_was_not_performed");?></p>
+				<p class="testok"><?php _h("test_was_ok");?></p>
+				<p class="testwarn"><?php _h("test_contains_warnings");?></p>
+				<p class="testerror"><?php _h("test_contains_errors");?></p>
+				<p class="testoff"><?php _h("test_was_not_performed");?></p>
 			</div>
 
 		</div>
@@ -274,7 +274,7 @@ function switchLang(lang) {
 		?>
 		</p>
 		
-		<p id="f_links"><?php _e("language");?>: 
+		<p id="f_links"><?php _h("language");?>: 
 		
 			<select name="language" onchange="switchLang(this[this.selectedIndex].value);">
 <?php
@@ -286,7 +286,7 @@ function switchLang(lang) {
 						if (strtolower($i18n_current_language) == strtolower($key)) {
 							echo "SELECTED ";	
 						}
-				echo "value=\"$key\">$name</option>\n";
+				echo "value=\"" . htmlspecialchars($key) . "\">" . htmlspecialchars($name) . "</option>\n";
 			}
 			
 			?>
