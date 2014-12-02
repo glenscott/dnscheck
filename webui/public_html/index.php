@@ -87,6 +87,12 @@ $sql = "SELECT arg1 FROM results WHERE message = 'ZONE:BEGIN' and test_id = (sel
 $status = DatabasePackage::query($sql, $version);
 $thisVersion = $version[0]["arg1"];
 
+if (!isset($languageId)) {
+	$languageId = '';
+}
+
+$view = (isset($_GET["view"]) ? $_GET['view'] : '');
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -120,7 +126,7 @@ var labelVersion = "<?php _e("test_was_performed_with_version"); ?>";
 
 function switchLang(lang) {
 	//alert(document.thisId + ":" + document.thisTime);
-	document.location.href='?time=' + document.thisTime + '&id=' + document.thisId + '&test=<?php echo $test?>&view=<?php print($_GET["view"]!="advanced" ? "basic" : "advanced" );?>&setLanguage=' + lang;	
+	document.location.href='?time=' + document.thisTime + '&id=' + document.thisId + '&test=<?php echo $test?>&view=<?php print($view!="advanced" ? "basic" : "advanced" );?>&setLanguage=' + lang;	
 }
 
 </script>
